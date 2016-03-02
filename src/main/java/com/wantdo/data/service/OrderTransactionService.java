@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface OrderTransactionService {
 
-    public Orderinfo createOrder(Orderinfo oi, List<Orderitem> items);
+    Orderinfo createOrder(Orderinfo oi, List<Orderitem> items);
 
 }
