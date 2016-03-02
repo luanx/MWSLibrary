@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wantdo.data.mapper.OrderinfoMapper">
+    <resultMap id="BaseResultMap" type="com.wantdo.data.entity.Orderinfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="orderid" property="orderid" jdbcType="VARCHAR"/>
+        <result column="internalid" property="internalid" jdbcType="VARCHAR"/>
+        <result column="externalid" property="externalid" jdbcType="VARCHAR"/>
+        <result column="PurchaseDate" property="purchasedate" jdbcType="TIMESTAMP"/>
+        <result column="LastUpdateDate" property="lastupdatedate" jdbcType="TIMESTAMP"/>
+        <result column="OrderStatus" property="orderstatus" jdbcType="VARCHAR"/>
+        <result column="FulfillmentChannel" property="fulfillmentchannel" jdbcType="VARCHAR"/>
+        <result column="SalesChannel" property="saleschannel" jdbcType="VARCHAR"/>
+        <result column="OrderChannel" property="orderchannel" jdbcType="VARCHAR"/>
+        <result column="ShipServiceLevel" property="shipservicelevel" jdbcType="VARCHAR"/>
+        <result column="shipname" property="shipname" jdbcType="VARCHAR"/>
+        <result column="AddressLine1" property="addressline1" jdbcType="VARCHAR"/>
+        <result column="AddressLine2" property="addressline2" jdbcType="VARCHAR"/>
+        <result column="AddressLine3" property="addressline3" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="County" property="county" jdbcType="VARCHAR"/>
+        <result column="District" property="district" jdbcType="VARCHAR"/>
+        <result column="StateOrRegion" property="stateorregion" jdbcType="VARCHAR"/>
+        <result column="PostalCode" property="postalcode" jdbcType="VARCHAR"/>
+        <result column="CountryCode" property="countrycode" jdbcType="VARCHAR"/>
+        <result column="Phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="total" property="total" jdbcType="VARCHAR"/>
+        <result column="CurrencyCode" property="currencycode" jdbcType="VARCHAR"/>
+        <result column="PaymentMethod" property="paymentmethod" jdbcType="VARCHAR"/>
+        <result column="NumberOfItemsShipped" property="numberofitemsshipped" jdbcType="INTEGER"/>
+        <result column="NumberOfItemsUnshipped" property="numberofitemsunshipped" jdbcType="INTEGER"/>
+        <result column="PaymentExecutionDetail" property="paymentexecutiondetail" jdbcType="VARCHAR"/>
+        <result column="MarketplaceId" property="marketplaceid" jdbcType="VARCHAR"/>
+        <result column="BuyerEmail" property="buyeremail" jdbcType="VARCHAR"/>
+        <result column="BuyerName" property="buyername" jdbcType="VARCHAR"/>
+        <result column="ShipmentServiceLevelCategory" property="shipmentservicelevelcategory" jdbcType="VARCHAR"/>
+        <result column="ShippedByAmazonTFM" property="shippedbyamazontfm" jdbcType="VARCHAR"/>
+        <result column="TFMShipmentStatus" property="tfmshipmentstatus" jdbcType="VARCHAR"/>
+        <result column="CbaDisplayableShippingLabel" property="cbadisplayableshippinglabel" jdbcType="VARCHAR"/>
+        <result column="OrderType" property="ordertype" jdbcType="VARCHAR"/>
+        <result column="EarliestShipDate" property="earliestshipdate" jdbcType="TIMESTAMP"/>
+        <result column="LatestShipDate" property="latestshipdate" jdbcType="TIMESTAMP"/>
+        <result column="EarliestDeliveryDate" property="earliestdeliverydate" jdbcType="TIMESTAMP"/>
+        <result column="LatestDeliveryDate" property="latestdeliverydate" jdbcType="TIMESTAMP"/>
+        <result column="createby" property="createby" jdbcType="INTEGER"/>
+        <result column="createon" property="createon" jdbcType="TIMESTAMP"/>
+        <result column="SellerId" property="sellerid" jdbcType="VARCHAR"/>
+        <result column="groupIds" property="groupids" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, orderid, internalid, externalid, PurchaseDate, LastUpdateDate, OrderStatus, FulfillmentChannel,
+        SalesChannel, OrderChannel, ShipServiceLevel, shipname, AddressLine1, AddressLine2,
+        AddressLine3, city, County, District, StateOrRegion, PostalCode, CountryCode, Phone,
+        total, CurrencyCode, PaymentMethod, NumberOfItemsShipped, NumberOfItemsUnshipped,
+        PaymentExecutionDetail, MarketplaceId, BuyerEmail, BuyerName, ShipmentServiceLevelCategory,
+        ShippedByAmazonTFM, TFMShipmentStatus, CbaDisplayableShippingLabel, OrderType, EarliestShipDate,
+        LatestShipDate, EarliestDeliveryDate, LatestDeliveryDate, createby, createon, SellerId,
+        groupIds
+    </sql>
+
+    <select id="selectByCondition" resultMap="BaseResultMap"
+            parameterType="com.wantdo.data.condition.impl.OrderinfoDaoCondition">
+        select
+        <include refid="Base_Column_List"/>
+        from orderinfo
+        <include refid="queryCondition"/>
+    </select>
+
+    <insert id="insertAndGenkey" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.wantdo.data.entity.Orderinfo">
+        insert into orderinfo (orderid, internalid,
+        externalid, PurchaseDate, LastUpdateDate,
+        OrderStatus, FulfillmentChannel, SalesChannel,
+        OrderChannel, ShipServiceLevel, shipname,
+        AddressLine1, AddressLine2, AddressLine3,
+        city, County, District,
+        StateOrRegion, PostalCode, CountryCode,
+        Phone, total, CurrencyCode,
+        PaymentMethod, NumberOfItemsShipped, NumberOfItemsUnshipped,
+        PaymentExecutionDetail, MarketplaceId,
+        BuyerEmail, BuyerName, ShipmentServiceLevelCategory,
+        ShippedByAmazonTFM, TFMShipmentStatus,
+        CbaDisplayableShippingLabel, OrderType,
+        EarliestShipDate, LatestShipDate, EarliestDeliveryDate,
+        LatestDeliveryDate, createby, createon,
+        SellerId, groupIds)
+        values (#{orderid,jdbcType=VARCHAR},
+        #{internalid,jdbcType=VARCHAR},
+        #{externalid,jdbcType=VARCHAR}, #{purchasedate,jdbcType=TIMESTAMP}, #{lastupdatedate,jdbcType=TIMESTAMP},
+        #{orderstatus,jdbcType=VARCHAR}, #{fulfillmentchannel,jdbcType=VARCHAR}, #{saleschannel,jdbcType=VARCHAR},
+        #{orderchannel,jdbcType=VARCHAR}, #{shipservicelevel,jdbcType=VARCHAR}, #{shipname,jdbcType=VARCHAR},
+        #{addressline1,jdbcType=VARCHAR}, #{addressline2,jdbcType=VARCHAR}, #{addressline3,jdbcType=VARCHAR},
+        #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR},
+        #{stateorregion,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{countrycode,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, #{currencycode,jdbcType=VARCHAR},
+        #{paymentmethod,jdbcType=VARCHAR}, #{numberofitemsshipped,jdbcType=INTEGER},
+        #{numberofitemsunshipped,jdbcType=INTEGER},
+        #{paymentexecutiondetail,jdbcType=VARCHAR}, #{marketplaceid,jdbcType=VARCHAR},
+        #{buyeremail,jdbcType=VARCHAR}, #{buyername,jdbcType=VARCHAR}, #{shipmentservicelevelcategory,jdbcType=VARCHAR},
+        #{shippedbyamazontfm,jdbcType=VARCHAR}, #{tfmshipmentstatus,jdbcType=VARCHAR},
+        #{cbadisplayableshippinglabel,jdbcType=VARCHAR}, #{ordertype,jdbcType=VARCHAR},
+        #{earliestshipdate,jdbcType=TIMESTAMP}, #{latestshipdate,jdbcType=TIMESTAMP},
+        #{earliestdeliverydate,jdbcType=TIMESTAMP},
+        #{latestdeliverydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=INTEGER}, #{createon,jdbcType=TIMESTAMP},
+        #{sellerid,jdbcType=VARCHAR}, #{groupids,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.wantdo.data.entity.Orderinfo">
+        update orderinfo
+        <set>
+            <if test="orderid != null">
+                orderid = #{orderid,jdbcType=VARCHAR},
+            </if>
+            <if test="internalid != null">
+                internalid = #{internalid,jdbcType=VARCHAR},
+            </if>
+            <if test="externalid != null">
+                externalid = #{externalid,jdbcType=VARCHAR},
+            </if>
+            <if test="purchasedate != null">
+                PurchaseDate = #{purchasedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastupdatedate != null">
+                LastUpdateDate = #{lastupdatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderstatus != null">
+                OrderStatus = #{orderstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="fulfillmentchannel != null">
+                FulfillmentChannel = #{fulfillmentchannel,jdbcType=VARCHAR},
+            </if>
+            <if test="saleschannel != null">
+                SalesChannel = #{saleschannel,jdbcType=VARCHAR},
+            </if>
+            <if test="orderchannel != null">
+                OrderChannel = #{orderchannel,jdbcType=VARCHAR},
+            </if>
+            <if test="shipservicelevel != null">
+                ShipServiceLevel = #{shipservicelevel,jdbcType=VARCHAR},
+            </if>
+            <if test="shipname != null">
+                shipname = #{shipname,jdbcType=VARCHAR},
+            </if>
+            <if test="addressline1 != null">
+                AddressLine1 = #{addressline1,jdbcType=VARCHAR},
+            </if>
+            <if test="addressline2 != null">
+                AddressLine2 = #{addressline2,jdbcType=VARCHAR},
+            </if>
+            <if test="addressline3 != null">
+                AddressLine3 = #{addressline3,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                County = #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="district != null">
+                District = #{district,jdbcType=VARCHAR},
+            </if>
+            <if test="stateorregion != null">
+                StateOrRegion = #{stateorregion,jdbcType=VARCHAR},
+            </if>
+            <if test="postalcode != null">
+                PostalCode = #{postalcode,jdbcType=VARCHAR},
+            </if>
+            <if test="countrycode != null">
+                CountryCode = #{countrycode,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                Phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="total != null">
+                total = #{total,jdbcType=VARCHAR},
+            </if>
+            <if test="currencycode != null">
+                CurrencyCode = #{currencycode,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentmethod != null">
+                PaymentMethod = #{paymentmethod,jdbcType=VARCHAR},
+            </if>
+            <if test="numberofitemsshipped != null">
+                NumberOfItemsShipped = #{numberofitemsshipped,jdbcType=INTEGER},
+            </if>
+            <if test="numberofitemsunshipped != null">
+                NumberOfItemsUnshipped = #{numberofitemsunshipped,jdbcType=INTEGER},
+            </if>
+            <if test="paymentexecutiondetail != null">
+                PaymentExecutionDetail = #{paymentexecutiondetail,jdbcType=VARCHAR},
+            </if>
+            <if test="marketplaceid != null">
+                MarketplaceId = #{marketplaceid,jdbcType=VARCHAR},
+            </if>
+            <if test="buyeremail != null">
+                BuyerEmail = #{buyeremail,jdbcType=VARCHAR},
+            </if>
+            <if test="buyername != null">
+                BuyerName = #{buyername,jdbcType=VARCHAR},
+            </if>
+            <if test="shipmentservicelevelcategory != null">
+                ShipmentServiceLevelCategory = #{shipmentservicelevelcategory,jdbcType=VARCHAR},
+            </if>
+            <if test="shippedbyamazontfm != null">
+                ShippedByAmazonTFM = #{shippedbyamazontfm,jdbcType=VARCHAR},
+            </if>
+            <if test="tfmshipmentstatus != null">
+                TFMShipmentStatus = #{tfmshipmentstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="cbadisplayableshippinglabel != null">
+                CbaDisplayableShippingLabel = #{cbadisplayableshippinglabel,jdbcType=VARCHAR},
+            </if>
+            <if test="ordertype != null">
+                OrderType = #{ordertype,jdbcType=VARCHAR},
+            </if>
+            <if test="earliestshipdate != null">
+                EarliestShipDate = #{earliestshipdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestshipdate != null">
+                LatestShipDate = #{latestshipdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="earliestdeliverydate != null">
+                EarliestDeliveryDate = #{earliestdeliverydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestdeliverydate != null">
+                LatestDeliveryDate = #{latestdeliverydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createby != null">
+                createby = #{createby,jdbcType=INTEGER},
+            </if>
+            <if test="createon != null">
+                createon = #{createon,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sellerid != null">
+                SellerId = #{sellerid,jdbcType=VARCHAR},
+            </if>
+            <if test="groupids != null">
+                groupIds = #{groupids,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <sql id="queryCondition">
+        <where>
+            1=1
+            <if test="id != null">
+                And id = #{id, jdbcType=INTEGER}
+            </if>
+            <if test="sellerid != null">
+                And sellerid = #{sellerid, jdbcType=VARCHAR}
+            </if>
+            <if test="externalid != null">
+                And externalid = #{externalid, jdbcType=VARCHAR}
+            </if>
+            <if test="orderstatus != null">
+                And orderstatus = #{orderstatus, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </sql>
+</mapper>

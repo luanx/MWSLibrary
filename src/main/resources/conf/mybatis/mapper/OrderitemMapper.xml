@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wantdo.data.mapper.OrderitemMapper">
+
+    <resultMap id="BaseResultMap" type="com.wantdo.data.entity.Orderitem">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="orderid" property="orderid" jdbcType="INTEGER"/>
+        <result column="asin" property="asin" jdbcType="VARCHAR"/>
+        <result column="sellersku" property="sellersku" jdbcType="VARCHAR"/>
+        <result column="OrderItemId" property="orderitemid" jdbcType="VARCHAR"/>
+        <result column="Title" property="title" jdbcType="VARCHAR"/>
+        <result column="QuantityOrdered" property="quantityordered" jdbcType="INTEGER"/>
+        <result column="QuantityShipped" property="quantityshipped" jdbcType="INTEGER"/>
+        <result column="ItemCurrencyCode" property="itemcurrencycode" jdbcType="VARCHAR"/>
+        <result column="ItemAmount" property="itemamount" jdbcType="VARCHAR"/>
+        <result column="ShippingCurrencyCode" property="shippingcurrencycode" jdbcType="VARCHAR"/>
+        <result column="ShippingAmount" property="shippingamount" jdbcType="VARCHAR"/>
+        <result column="GiftWrapCurrencyCode" property="giftwrapcurrencycode" jdbcType="VARCHAR"/>
+        <result column="GiftWrapAmount" property="giftwrapamount" jdbcType="VARCHAR"/>
+        <result column="ItemtaxCurrencyCode" property="itemtaxcurrencycode" jdbcType="VARCHAR"/>
+        <result column="ItemtaxAmount" property="itemtaxamount" jdbcType="VARCHAR"/>
+        <result column="ShippingtaxCurrencyCode" property="shippingtaxcurrencycode" jdbcType="VARCHAR"/>
+        <result column="ShippingtaxAmount" property="shippingtaxamount" jdbcType="VARCHAR"/>
+        <result column="GiftWraptaxCurrencyCode" property="giftwraptaxcurrencycode" jdbcType="VARCHAR"/>
+        <result column="GiftWraptaxAmount" property="giftwraptaxamount" jdbcType="VARCHAR"/>
+        <result column="ShippingDiscountCurrencyCode" property="shippingdiscountcurrencycode" jdbcType="VARCHAR"/>
+        <result column="ShippingDiscountAmount" property="shippingdiscountamount" jdbcType="VARCHAR"/>
+        <result column="PromotionDiscountCurrencyCode" property="promotiondiscountcurrencycode" jdbcType="VARCHAR"/>
+        <result column="PromotionDiscountAmount" property="promotiondiscountamount" jdbcType="VARCHAR"/>
+        <result column="PromotionIds" property="promotionids" jdbcType="VARCHAR"/>
+        <result column="CODFeeCurrencyCode" property="codfeecurrencycode" jdbcType="VARCHAR"/>
+        <result column="CODFeeAmount" property="codfeeamount" jdbcType="VARCHAR"/>
+        <result column="CODFeeDiscountCurrencyCode" property="codfeediscountcurrencycode" jdbcType="VARCHAR"/>
+        <result column="CODFeeDiscountAmount" property="codfeediscountamount" jdbcType="VARCHAR"/>
+        <result column="GiftMessageText" property="giftmessagetext" jdbcType="VARCHAR"/>
+        <result column="GiftWrapLevel" property="giftwraplevel" jdbcType="VARCHAR"/>
+        <result column="ConditionNote" property="conditionnote" jdbcType="VARCHAR"/>
+        <result column="ConditionId" property="conditionid" jdbcType="VARCHAR"/>
+        <result column="ConditionSubtypeId" property="conditionsubtypeid" jdbcType="VARCHAR"/>
+        <result column="ScheduledDeliveryStartDate" property="scheduleddeliverystartdate" jdbcType="TIMESTAMP"/>
+        <result column="ScheduledDeliveryEndDate" property="scheduleddeliveryenddate" jdbcType="TIMESTAMP"/>
+        <result column="itemstatus" property="itemstatus" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, orderid, asin, sellersku, OrderItemId, Title, QuantityOrdered, QuantityShipped,
+        ItemCurrencyCode, ItemAmount, ShippingCurrencyCode, ShippingAmount, GiftWrapCurrencyCode,
+        GiftWrapAmount, ItemtaxCurrencyCode, ItemtaxAmount, ShippingtaxCurrencyCode, ShippingtaxAmount,
+        GiftWraptaxCurrencyCode, GiftWraptaxAmount, ShippingDiscountCurrencyCode, ShippingDiscountAmount,
+        PromotionDiscountCurrencyCode, PromotionDiscountAmount, PromotionIds, CODFeeCurrencyCode,
+        CODFeeAmount, CODFeeDiscountCurrencyCode, CODFeeDiscountAmount, GiftMessageText,
+        GiftWrapLevel, ConditionNote, ConditionId, ConditionSubtypeId, ScheduledDeliveryStartDate,
+        ScheduledDeliveryEndDate, itemstatus, remark
+    </sql>
+
+    <insert id="insertAndGenKey" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.wantdo.data.entity.Orderitem">
+        insert into orderitem ( orderid, asin,
+        sellersku, OrderItemId, Title,
+        QuantityOrdered, QuantityShipped, ItemCurrencyCode,
+        ItemAmount, ShippingCurrencyCode, ShippingAmount,
+        GiftWrapCurrencyCode, GiftWrapAmount, ItemtaxCurrencyCode,
+        ItemtaxAmount, ShippingtaxCurrencyCode,
+        ShippingtaxAmount, GiftWraptaxCurrencyCode,
+        GiftWraptaxAmount, ShippingDiscountCurrencyCode,
+        ShippingDiscountAmount, PromotionDiscountCurrencyCode,
+        PromotionDiscountAmount, PromotionIds,
+        CODFeeCurrencyCode, CODFeeAmount, CODFeeDiscountCurrencyCode,
+        CODFeeDiscountAmount, GiftMessageText,
+        GiftWrapLevel, ConditionNote, ConditionId,
+        ConditionSubtypeId, ScheduledDeliveryStartDate,
+        ScheduledDeliveryEndDate, itemstatus,
+        remark)
+        values (
+        #{orderid,jdbcType=INTEGER}, #{asin,jdbcType=VARCHAR},
+        #{sellersku,jdbcType=VARCHAR}, #{orderitemid,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+        #{quantityordered,jdbcType=INTEGER}, #{quantityshipped,jdbcType=INTEGER}, #{itemcurrencycode,jdbcType=VARCHAR},
+        #{itemamount,jdbcType=VARCHAR}, #{shippingcurrencycode,jdbcType=VARCHAR}, #{shippingamount,jdbcType=VARCHAR},
+        #{giftwrapcurrencycode,jdbcType=VARCHAR}, #{giftwrapamount,jdbcType=VARCHAR},
+        #{itemtaxcurrencycode,jdbcType=VARCHAR},
+        #{itemtaxamount,jdbcType=VARCHAR}, #{shippingtaxcurrencycode,jdbcType=VARCHAR},
+        #{shippingtaxamount,jdbcType=VARCHAR}, #{giftwraptaxcurrencycode,jdbcType=VARCHAR},
+        #{giftwraptaxamount,jdbcType=VARCHAR}, #{shippingdiscountcurrencycode,jdbcType=VARCHAR},
+        #{shippingdiscountamount,jdbcType=VARCHAR},
+        #{promotiondiscountcurrencycode,jdbcType=VARCHAR},
+        #{promotiondiscountamount,jdbcType=VARCHAR}, #{promotionids,jdbcType=VARCHAR},
+        #{codfeecurrencycode,jdbcType=VARCHAR}, #{codfeeamount,jdbcType=VARCHAR},
+        #{codfeediscountcurrencycode,jdbcType=VARCHAR},
+        #{codfeediscountamount,jdbcType=VARCHAR}, #{giftmessagetext,jdbcType=VARCHAR},
+        #{giftwraplevel,jdbcType=VARCHAR}, #{conditionnote,jdbcType=VARCHAR}, #{conditionid,jdbcType=VARCHAR},
+        #{conditionsubtypeid,jdbcType=VARCHAR}, #{scheduleddeliverystartdate,jdbcType=TIMESTAMP},
+        #{scheduleddeliveryenddate,jdbcType=TIMESTAMP}, #{itemstatus,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
